@@ -700,6 +700,148 @@
                 feedback!</div>
         </div>
     </div>
+<!-- Privacy Policy Page -->
+ 
+<div id="privacy-page" class="page">
+  <section class="about-section">
+    <div class="container">
+      <h1 class="section-title">Privacy Policy</h1>
+      <p class="section-subtitle">
+        At ReWear, your privacy is important to us. This Privacy Policy explains how
+        we collect, use, and protect your personal information when you use our
+        platform.
+      </p>
+
+      <div class="about-content">
+        <div class="about-item">
+          <h3>Information We Collect</h3>
+          <p>
+            We may collect details such as your name, email address, profile information,
+            and activity on the platform to improve your experience.
+          </p>
+          <ul style="margin-top: 15px; list-style: disc; padding-left: 20px;">
+            <li>Personal details (e.g., name, email, profile picture)</li>
+            <li>Information provided when listing or exchanging items</li>
+            <li>Activity data such as searches, clicks, and swaps</li>
+            <li>Feedback, reviews, and messages shared with others</li>
+            <li>Technical information like IP address, browser type, and device</li>
+          </ul>
+          <br>
+        </div>
+
+        <div class="about-item">
+          <h3>How We Use Your Information</h3>
+          <p>
+            Your information is used to facilitate item exchanges, enhance features, and
+            ensure community safety. We may also use it for communication regarding
+            platform updates and service improvements.
+          </p>
+          <p style="margin-top: 5px;">
+            <i>Rest assured, we never sell or trade your personal data to third parties.</i>
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3>Data Protection</h3>
+          <p>
+            We employ industry-standard security measures to safeguard your data. While
+            we strive to protect your personal information, we also encourage you to
+            keep your login credentials secure and private.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3>Your Rights</h3>
+          <p>
+            You have the right to access, update, or delete your personal information
+            from our platform. For any privacy-related concerns, you can contact us at
+            <i>support@rewear.com.</i>
+          </p>
+        </div>
+      </div>
+
+      <p class="section-subtitle" style="margin-top: 30px; font-size: 14px; color: gray;">
+        Last updated: <span id="last-updated-privacy"></span>
+      </p>
+    </div>
+  </section>
+</div>
+
+
+<!-- Terms and Conditions Page -->
+<div id="terms-page" class="page">
+  <section class="about-section">
+    <div class="container">
+      <h1 class="section-title">Terms & Conditions</h1>
+      <p class="section-subtitle">
+        Welcome to ReWear! By accessing or using our platform, you agree to comply with
+        the following Terms & Conditions. Please read them carefully before using our services.
+      </p>
+
+      <div class="about-content">
+        <div class="about-item">
+          <h3>Acceptance of Terms</h3>
+          <p>
+            By creating an account or using ReWear, you agree to abide by these Terms & Conditions 
+            as well as any future updates. If you do not agree, you should discontinue use of our platform.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3>User Responsibilities</h3>
+          <p>
+            You are responsible for the accuracy of the information you provide and for maintaining
+            the confidentiality of your account. Any misuse of the platform may result in suspension
+            or termination of your account.
+          </p>
+          <ul style="margin-top: 15px; list-style: disc; padding-left: 20px;">
+            <li>Do not post or exchange counterfeit or prohibited items.</li>
+            <li>Respect other users and communicate politely.</li>
+            <li>Do not misuse the platform for fraudulent or illegal activities.</li>
+          </ul>
+          <br>
+        </div>
+
+        <div class="about-item">
+          <h3>Item Listings & Exchanges</h3>
+          <p>
+            All items listed must be accurately described. ReWear is not responsible for the condition,
+            quality, or safety of items exchanged between users. Disputes should be resolved amicably
+            between members.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3>Limitation of Liability</h3>
+          <p>
+            ReWear provides a platform for community exchange and is not liable for direct, indirect,
+            or incidental damages arising from the use of our services. Users participate at their own risk.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3>Third-Party Services</h3>
+          <p>
+            Our platform may include links or integrations with third-party services (such as payment
+            providers or analytics tools). We are not responsible for the practices of these external services.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3>Changes to Terms</h3>
+          <p>
+            ReWear reserves the right to modify or update these Terms & Conditions at any time.
+            Continued use of the platform after updates means you accept the revised terms.
+          </p>
+        </div>
+      </div>
+
+      <p class="section-subtitle" style="margin-top: 30px; font-size: 14px; color: gray;">
+        Last updated: <span id="last-updated-terms"></span>
+      </p>
+    </div>
+  </section>
+</div>
 
 
     <footer class="footer">
@@ -730,10 +872,10 @@
             <!-- Column 3: Info -->
             <div class="footer-column">
                 <h4>Info</h4>
-                <a href="#">Terms</a>
+                <a href="#" onclick="showPage('terms')">Terms</a>
                 <a href="#">Returns</a>
                 <a href="#">Shipping</a>
-                <a href="#">Privacy</a>
+                <a href="#" onclick="showPage('privacy')">Privacy</a>
                 <a href="#">FAQs</a>
             </div>
 
@@ -794,6 +936,7 @@
         </div>
     </div>
 
+
     <script src="static/script.js"></script>
     <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -840,6 +983,19 @@ document.addEventListener('DOMContentLoaded', function () {
     categoryFilter.addEventListener('change', filterItems);
     searchInput.addEventListener('input', filterItems);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const today = new Date();
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = today.toLocaleDateString("en-US", options);
+  
+  const privacyEl = document.getElementById("last-updated-privacy");
+  if (privacyEl) privacyEl.textContent = formattedDate;
+
+  const termsEl = document.getElementById("last-updated-terms");
+  if (termsEl) termsEl.textContent = formattedDate;
+});
+
 </script>
 
 </body>
