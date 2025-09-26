@@ -8,6 +8,40 @@
     <link rel="stylesheet" href="static/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    .faq-question {
+        cursor: pointer;
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background-color: var(--bg-tertiary);
+    }
+
+    .faq-answer {
+        display: none;
+        padding: 10px 20px;
+        margin-bottom: 15px;
+        background-color: var(--card-bg);
+        color: var(--text-secondary);
+        border-left: 4px solid var(--text-accent);
+        border-radius: 0 0 8px 8px;
+        transition: all 0.3s ease;
+    }
+
+    .faq-toggle {
+        font-weight: bold;
+        margin-left: 10px;
+    }
+</style>
 
 </head>
 
@@ -527,6 +561,86 @@
         </div>
     </div>
 
+    <div id="faq-page" class="page">
+    <section class="about-section">
+        <div class="container"><br><br>
+            <h1 class="section-title">Frequently Asked Questions (FAQ)</h1><br>
+
+            <div class="about-content">
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">How does ReWear work?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        ReWear lets you list clothes you no longer wear to earn points. You can then use these points to swap for items listed by others, keeping your wardrobe fresh without buying new clothes.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">Do I have to pay for swaps?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        No! All swaps are point-based. You earn points by listing your clothes and spend points to get clothes from others—making it completely money-free.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">Is it safe to swap clothes with strangers?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        Yes. ReWear encourages users to communicate through the platform and rate each transaction. Our community guidelines ensure safe and respectful swaps.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">Can I list any type of clothing?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        Almost! We accept clean, gently used garments. Please make sure your items are in good condition to keep the community positive and sustainable.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">How do I earn points?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        Every item you list earns you points once it is accepted by the community. These points can then be used to swap for other items on ReWear.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">Can I swap clothes internationally?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        Currently, ReWear supports swaps within your country to keep shipping simple and sustainable. We plan to expand internationally in the future.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">What if the item I receive doesn’t fit?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        You can communicate with the other user before swapping to confirm sizes. ReWear also encourages honest reviews to maintain trust in the community.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">How do I track my points?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        Your points are displayed in your ReWear profile. Each listed item, swap, and completed transaction updates your total automatically.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">Do I need an account to use ReWear?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        Yes, creating an account is free and allows you to list items, track points, and swap safely with other community members.
+                    </p>
+                </div>
+
+                <div class="about-item faq-item">
+                    <h3 class="faq-question">What happens if an item is damaged during a swap?<span class="faq-toggle">+</span></h3>
+                    <p class="faq-answer">
+                        ReWear encourages users to package items carefully. In case of disputes, the platform provides a rating and review system to address issues and maintain accountability.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
     <!-- Feedback Page -->
     <div id="feedback-page" class="page">
         <div class="container">
@@ -730,7 +844,7 @@
                 <a href="#">Returns</a>
                 <a href="#">Shipping</a>
                 <a href="#" onclick="showPage('privacy')">Privacy</a>
-                <a href="#">FAQs</a>
+                <a href="#" onclick="showPage('faq')">FAQs</a>
             </div>
 
             <!-- Column 4: Newsletter Signup -->
@@ -837,6 +951,31 @@ document.addEventListener('DOMContentLoaded', function () {
     categoryFilter.addEventListener('change', filterItems);
     searchInput.addEventListener('input', filterItems);
 });
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(q => {
+        q.addEventListener('click', () => {
+            const answer = q.nextElementSibling;
+            const toggle = q.querySelector('.faq-toggle');
+
+            // Toggle answer display
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                toggle.textContent = '+';
+            } else {
+                answer.style.display = 'block';
+                toggle.textContent = '−';
+            }
+
+            // Close other answers
+            faqQuestions.forEach(otherQ => {
+                if (otherQ !== q) {
+                    otherQ.nextElementSibling.style.display = 'none';
+                    otherQ.querySelector('.faq-toggle').textContent = '+';
+                }
+            });
+        });
+    });
 </script>
 
 </body>
